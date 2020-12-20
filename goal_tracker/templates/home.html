@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% if records_dict %}
+{% for record_id, record in records_dict.items() %}
+<a href="{{ url_for('record.show_record', record_id=record_id) }}" class="text-dark text-decoration-none">
+<div>
+<p>{{ record['month'] }}, {{ record['year'] }}</p>
+<p>Goal: <span class="text-success">${{ record['goal amount'] }}</span></p>
+</div>
+</a>
+{% endfor %}
+{% else %}
+<p>It looks like you don't have any records yet. Let's change that by creating a new one!</p>
+{% endif %}
+
+{% endblock %}
